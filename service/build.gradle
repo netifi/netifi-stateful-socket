@@ -1,0 +1,12 @@
+plugins {
+    id 'org.springframework.boot'
+}
+
+springBoot {
+    mainClassName = 'com.netifi.quickstart.service.Main'
+}
+
+dependencies {
+    implementation project(':service-idl')
+    implementation "com.netifi:netifi-spring-boot-starter"
+}

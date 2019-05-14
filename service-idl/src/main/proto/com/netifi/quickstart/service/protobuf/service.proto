@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package com.netifi.quickstart.service;
+
+import "google/protobuf/empty.proto";
+
+option java_package = "com.netifi.quickstart.service";
+option java_outer_classname = "ServiceProto";
+option java_multiple_files = true;
+
+service SessionService {
+    rpc StartSession (SessionRequest) returns (SessionResponse) {}
+    rpc EndSession (SessionRequest) returns (google.protobuf.Empty) {}
+}
+
+message SessionRequest {
+  string sessionId = 1;
+  string sessionGroup = 2;
+  string sessionDestination = 3;
+}
+
+message SessionResponse {
+  string destination = 1;
+}
+
+service CounterService {
+  rpc Delta(CounterRequest) returns (CounterResponse);
+  rpc CurrentCount(CounterRequest) returns (CounterResponse);
+}
+
+message CounterRequest {
+  string sessionId = 1;
+  fixed32 delta = 2;
+}
+
+message CounterResponse {
+  fixed32 count = 1;
+}
