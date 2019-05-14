@@ -1,9 +1,6 @@
-# netifi-spring-quickstart
-Source code for the [Netifi Spring Boot QuickStart](https://www.netifi.com/getstarted-springboot).
+# netifi-stateful-socket
 
-This project provides a scaffolding for getting up and running quickly with [Netifi](http://www.netifi.com/) on [Spring Boot](https://spring.io/projects/spring-boot).
-
-The project comes with a simple client and service. The client sends the word `World` to the service and the service responds with the message `Hello, World! from {service name}`.
+This project is based on the Netifi Spring Quickstart, and has an example create a stateful RSocket.
 
 ## Projects
 This repo contains the following projects:
@@ -63,7 +60,7 @@ Congratulations! You were able to get a Netifi Broker up and running and send a 
 For bugs, questions, and discussions please use the [Github Issues](https://github.com/netifi/netifi-quickstart-spring/issues).
 
 ## License
-Copyright 2018 [Netifi Inc.](https://www.netifi.com)
+Copyright 2019 [Netifi Inc.](https://www.netifi.com)
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

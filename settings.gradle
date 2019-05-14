@@ -13,7 +13,7 @@ pluginManagement {
     }
 }
 
-rootProject.name = 'netifi-quickstart-spring'
+rootProject.name = 'netifi-stateful-socket'
 include 'client'
 include 'service'
 include 'service-idl'
