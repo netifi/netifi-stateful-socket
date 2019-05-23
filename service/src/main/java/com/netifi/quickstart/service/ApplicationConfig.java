@@ -2,10 +2,9 @@ package com.netifi.quickstart.service;
 
 import com.netifi.common.tags.Tags;
 import com.netifi.spring.core.BrokerClientTagSupplier;
+import java.util.UUID;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import java.util.UUID;
 
 @Configuration
 public class ApplicationConfig {

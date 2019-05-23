@@ -12,6 +12,10 @@ import com.netifi.quickstart.service.SessionServiceClient;
 import io.rsocket.AbstractRSocket;
 import io.rsocket.Payload;
 import io.rsocket.RSocket;
+import java.time.Duration;
+import java.util.Objects;
+import java.util.UUID;
+import java.util.concurrent.TimeoutException;
 import org.reactivestreams.Publisher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,11 +25,6 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.core.publisher.MonoProcessor;
 import reactor.core.publisher.SignalType;
-
-import java.time.Duration;
-import java.util.Objects;
-import java.util.UUID;
-import java.util.concurrent.TimeoutException;
 
 public class StatefulSocket extends AbstractRSocket implements BrokerSocket {
   private static final Logger logger = LoggerFactory.getLogger(StatefulSocket.class);

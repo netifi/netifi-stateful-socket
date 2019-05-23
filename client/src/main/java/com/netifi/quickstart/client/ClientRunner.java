@@ -19,73 +19,41 @@ public class ClientRunner implements CommandLineRunner {
 
   @Override
   public void run(String... args) throws Exception {
-    StatefulSocket s1 =
-      StatefulSocket.newInstance(brokerClient, "quickstart.services.sessionDemo");
-    
-    StatefulSocket s2 =
-      StatefulSocket.newInstance(brokerClient, "quickstart.services.sessionDemo");
-  
+    StatefulSocket s1 = StatefulSocket.newInstance(brokerClient, "quickstart.services.sessionDemo");
+
+    StatefulSocket s2 = StatefulSocket.newInstance(brokerClient, "quickstart.services.sessionDemo");
+
     CounterServiceClient c1 = new CounterServiceClient(s1);
-  
+
     CounterServiceClient c2 = new CounterServiceClient(s2);
-  
-    c1
-        .delta(
-            CounterRequest.newBuilder()
-                .setDelta(1)
-                .setSessionId(s1.getSessionId())
-                .build())
+
+    c1.delta(CounterRequest.newBuilder().setDelta(1).setSessionId(s1.getSessionId()).build())
         .block();
-  
-    c2
-      .delta(
-        CounterRequest.newBuilder()
-          .setDelta(10)
-          .setSessionId(s2.getSessionId())
-          .build())
-      .block();
-  
-    c2
-      .delta(
-        CounterRequest.newBuilder()
-          .setDelta(-5)
-          .setSessionId(s2.getSessionId())
-          .build())
-      .block();
-  
-  
-    c1
-        .delta(
-            CounterRequest.newBuilder()
-                .setDelta(1)
-                .setSessionId(s1.getSessionId())
-                .build())
+
+    c2.delta(CounterRequest.newBuilder().setDelta(10).setSessionId(s2.getSessionId()).build())
         .block();
-    
-    c1
-        .delta(
-            CounterRequest.newBuilder()
-                .setDelta(1)
-                .setSessionId(s1.getSessionId())
-                .build())
+
+    c2.delta(CounterRequest.newBuilder().setDelta(-5).setSessionId(s2.getSessionId()).build())
+        .block();
+
+    c1.delta(CounterRequest.newBuilder().setDelta(1).setSessionId(s1.getSessionId()).build())
+        .block();
+
+    c1.delta(CounterRequest.newBuilder().setDelta(1).setSessionId(s1.getSessionId()).build())
         .block();
 
     CounterResponse b1 =
-        c1
-            .currentCount(
-                CounterRequest.newBuilder().setSessionId(s1.getSessionId()).build())
+        c1.currentCount(CounterRequest.newBuilder().setSessionId(s1.getSessionId()).build())
             .block();
-  
+
     CounterResponse b2 =
-      c2
-        .currentCount(
-          CounterRequest.newBuilder().setSessionId(s2.getSessionId()).build())
-        .block();
-  
+        c2.currentCount(CounterRequest.newBuilder().setSessionId(s2.getSessionId()).build())
+            .block();
+
     System.out.println("The count for c1 is " + b1.getCount());
-  
+
     System.out.println("The count for c2 is " + b2.getCount());
-    
+
     System.exit(0);
   }
 }
